@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo chown -R 755 (find . -type d)
+chmod -R a+X
