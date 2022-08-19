@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Fizzbuzz
+a=1
+while [ "$a" -lt 101 ]; do
+	mod5=$((a % 5))
+	mod3=$((a % 3))
+	if [[ ("$mod5" -eq 0)  && ("$mod3" -eq 0) ]]; then
+		echo "FizzBuzz"
+	elif [ "$mod3" -eq 0 ]; then
+		echo "Fizz"
+	elif [ "$mod5" -eq 0 ]; then
+		echo "Buzz"
+	else
+		echo "$a"
+	fi
+	((a++))
+done
