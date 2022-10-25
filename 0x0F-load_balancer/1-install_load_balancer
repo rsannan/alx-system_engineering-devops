@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Installs and configures HAproxy on a server
+
+#install haproxy
+sudo apt update
+sudo apt -y install haproxy
+
+# Enable load balancer and make copy of original config
+#copy incase i want to go back to default after mistake
+sudo sed -i "8 a\ENABLED=1\n" /etc/default/haproxy
+sudo cp -a /etc/haproxy/haproxy.cfg{,.orig}
+
+#Configure load balancer with web servers
+sudo sed -i "$ a\ \nfrontend load_balancer\n\tbind\t*:80\n\tmode\thttp\n\tdefault_backend\tweb_servers\n\nbackend web_servers\n\tbalance\troundrobin\n\tserver\t29932-web-01\t3.236.221.4:80\n\tserver\t29932-web-02\t34.201.164.227:80" /etc/haproxy/haproxy.cfg
+
+sudo service haproxy start
