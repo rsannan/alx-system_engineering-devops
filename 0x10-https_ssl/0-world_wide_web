@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# displays information about subdomains
+
+subdomains_all=( "www" "lb-01" "web-01" "web-02" )
+
+runDig () {
+    subdomain=$1
+    domain=$2
+
+    dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$subdomain" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5 }'
+}
+
+if [ $# -lt 2 ];
+then
+for i in "${subdomains_all[@]}";do
+runDig "$i" "$1"
+done
+
+elif [ $# -eq 2 ];
+then
+runDig "$2" "$1"
+fi
