@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# installs the ufw firewall and setup a few rules on a webserver
+
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
