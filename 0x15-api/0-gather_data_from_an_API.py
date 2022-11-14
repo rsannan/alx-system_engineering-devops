@@ -27,4 +27,4 @@ if __name__ == "__main__":
 
     for item in all_todos:
         if item.get('userId') == int(eid) and item.get('completed') is True:
-            print(item.get('title'))
+            print('\t {}'.format(item.get('title')))
