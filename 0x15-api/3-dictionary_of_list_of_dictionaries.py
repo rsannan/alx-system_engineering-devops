@@ -22,9 +22,9 @@ if __name__ == "__main__":
         with open('todo_all_employees.json', 'a', encoding='UTF8') as f:
             row = list(map(
                            lambda x: {
+                                     "username": username,
                                      "task": x.get("title"),
-                                     "completed": x.get("completed"),
-                                     "username": username
+                                     "completed": x.get("completed")
                                       }, user_todo))
             json_data = {"{}".format(eid): row}
             json.dump(json_data, f)
