@@ -11,6 +11,7 @@ if __name__ == "__main__":
     employee_list = employee_req.json()
     todo_list = requests.get('{}todos'.format(url))
     all_todos = todo_list.json()
+    json_data = {}
 
     for item in employee_list:
         username = item.get('username')
@@ -19,12 +20,12 @@ if __name__ == "__main__":
         for item in all_todos:
             if item.get('userId') == int(eid):
                 user_todo.append(item)
-        with open('todo_all_employees.json', 'a', encoding='UTF8') as f:
             row = list(map(
                            lambda x: {
                                      "username": username,
                                      "task": x.get("title"),
                                      "completed": x.get("completed")
                                       }, user_todo))
-            json_data = {"{}".format(eid): row}
-            json.dump(json_data, f)
+            json_data["{}".format(eid)] = row
+    with open('todo_all_employees.json', 'a', encoding='UTF8') as f:
+        json.dump(json_data, f)
