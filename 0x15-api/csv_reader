@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+
+import csv
+import sys
+
+with open("{}.csv".format(sys.argv[1]), 'r') as file:
+  csvreader = csv.reader(file)
+  for row in csvreader:
+    print(row)
