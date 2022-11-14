@@ -21,7 +21,7 @@ if __name__ == "__main__":
             todo += 1
             if item.get('completed') is True:
                 done += 1
-    print('Employee {} is done with tasks({}/{})'.format(
+    print('Employee {} is done with tasks({}/{}):'.format(
                                                   employee_name,
                                                   done, todo))
 
