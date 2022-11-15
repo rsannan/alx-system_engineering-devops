@@ -27,5 +27,5 @@ if __name__ == "__main__":
                                      "completed": x.get("completed")
                                       }, user_todo))
             json_data["{}".format(eid)] = row
-    with open('todo_all_employees.json', 'a', encoding='UTF8') as f:
+    with open('todo_all_employees.json', 'w') as f:
         json.dump(json_data, f)
